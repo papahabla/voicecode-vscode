@@ -5,6 +5,11 @@ pack = Packages.register
   description: 'Visual Studio Code integration'
 
 pack.implement
+  'common:indent-left': ->
+    @key 'tab', 'shift'
+
+  'common:indent-right': ->
+    @key 'tab'
 
   'object:next': ->
     @key 'right', 'command option'
@@ -25,6 +30,11 @@ pack.implement
       @string input
       @delay 100
       @enter()
+
+  'editor:toggle-comments': ({first, last} = {}) ->
+      @key 'p', 'command shift'
+      @string 'Toggle Line Comment'
+      @key 'enter'
 
   'ide:build': (input) ->
       @key 'f7', 'shift'
